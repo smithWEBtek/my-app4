@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-export class Panel extends React.Component {
+export class Panel extends Component {
   render() {
     return (
       <div className="panel">
@@ -12,21 +12,7 @@ export class Panel extends React.Component {
   }
 }
 
-export class MovieBrowser extends React.Component {
-  render() {
-    const currentPlayingTitle = 'Mad Max: Fury Road';
- 
-    return (
-      <div className="movie-browser">
-        
-        <h3>{this.props.title}</h3>
-        {this.props.children}
-      </div>      
-    );
-  }
-}
-
-export class Children extends React.Component{
+export class Children extends Component{
   render(){
     return(
       <div>
@@ -36,3 +22,37 @@ export class Children extends React.Component{
   }
 }
  
+export class MovieBrowser extends Component {
+  render(){
+    const currentPlayingTitle = 'Mad Max: Fury Road';
+    const childrenWithExtraProp = React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        isPlaying: child.props.title === currentPlayingTitle
+      });
+    });
+
+    return (
+      <div className="movie-browser">
+        <p>{this.props.children}</p>
+        {childrenWithExtraProp}
+      </div>      
+    );
+  }
+};
+
+export class SomeComponent extends Component {
+  render() {
+    const childrenWithWrapperDiv = React.Children.map(this.props.children, child => {
+      return (
+        <div className="some-component-special-class">{child}</div> 
+      );
+    });
+ 
+    return (
+      <div className="some-component">
+        <p>This component has {React.Children.count(this.props.children)} children.</p>
+        {childrenWithWrapperDiv}        
+      </div>      
+    );
+  }
+}

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component }from 'react';
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
-class Product extends React.Component{
+class Product extends Component{
   render(){
     return(
       <div>

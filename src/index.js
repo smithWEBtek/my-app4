@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App'
-import { Panel, MovieBrowser, Children } from './Children'
+import { Panel, Children, MovieBrowser, SomeComponent} from './Children'
 
 const MOUNT0 = document.querySelector('#section0')
 const MOUNT1 = document.querySelector('#section1')
@@ -25,14 +25,21 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-  <MovieBrowser 
-    title="My New Bike"
+  <Children
   />, 
   MOUNT2
 );
 
 ReactDOM.render(
-  <Children
+  <MovieBrowser
+    title="Browse for movies"
   />, 
   MOUNT3
+);
+
+ReactDOM.render(
+  <SomeComponent 
+    
+  />, 
+  MOUNT4
 );

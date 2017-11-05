@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 
-export class Profile extends React.Component{
+export class Profile extends Component{
   render() {
     return (
       <div className="profile">
@@ -19,7 +19,7 @@ Profile.defaultProps = {
   gender: 'unknown'
 }
 
-export class Order extends React.Component{
+export class Order extends Component{
   render() {
     return (
       <div className="order">
